@@ -1,57 +1,42 @@
-Ôªøpackage com.example.service;
+package com.example.service;
 
 /**
- * Servi√ßo respons√°vel pela gest√£o de v√≠nculos entre sacados e cedentes.
+ * ServiÁo respons·vel pela gest„o de vÌnculos entre sacados e cedentes.
  *
- * Este componente gerencia as opera√ß√µes de cria√ß√£o, atualiza√ß√£o e
- * encerramento de v√≠nculos no sistema de cr√©dito.
+ * Este componente gerencia as operaÁıes de criaÁ„o, atualizaÁ„o e
+ * encerramento de vÌnculos no sistema de crÈdito.
  *
- * Regras de neg√≥cio:
- * - O v√≠nculo s√≥ pode ser criado se o sacado estiver ativo
- * - A data de encerramento n√£o pode ser anterior √† data de cria√ß√£o
- * - O n√∫mero m√°ximo de v√≠nculos por cedente √© configur√°vel
- *
- * @author Jo√£o da Silva
- * @since vers√£o 2.0
+ * @author Jo„o da Silva
+ * @since vers„o 2.0
  */
 public class VinculoService {
 
-    // Descri√ß√£o: gerencia a cria√ß√£o de v√≠nculos
+    // DescriÁ„o: gerencia a criaÁ„o de vÌnculos
     private String descricao;
 
-    // Situa√ß√£o atual do v√≠nculo (ativo/inativo)
+    // SituaÁ„o atual do vÌnculo (ativo/inativo)
     private String situacao;
 
-    // C√≥digo de identifica√ß√£o √∫nica
     private Long id;
-
-    // Data de cria√ß√£o do v√≠nculo
     private String dataCriacao;
-
-    // Data de encerramento (pode ser nula se ainda estiver ativo)
     private String dataEncerramento;
-
-    // N√∫mero do contrato de cr√©dito associado
     private String numeroContrato;
-
-    // Observa√ß√µes adicionais sobre o v√≠nculo
     private String observacoes;
 
     public VinculoService() {
     }
 
     /**
-     * Cria um novo v√≠nculo entre sacado e cedente.
+     * Cria um novo vÌnculo entre sacado e cedente.
      *
-     * @param descricao descri√ß√£o do v√≠nculo
-     * @param situacao situa√ß√£o inicial (normalmente "ativo")
+     * @param descricao descriÁ„o do vÌnculo
+     * @param situacao situaÁ„o inicial
      * @return o objeto VinculoService configurado
-     * @throws IllegalArgumentException se a descri√ß√£o for nula ou vazia
+     * @throws IllegalArgumentException se a descriÁ„o for nula ou vazia
      */
     public VinculoService criarVinculo(String descricao, String situacao) {
-        // Valida√ß√£o: descri√ß√£o n√£o pode ser nula
         if (descricao == null || descricao.isEmpty()) {
-            throw new IllegalArgumentException("Descri√ß√£o n√£o pode ser vazia");
+            throw new IllegalArgumentException("DescriÁ„o n„o pode ser vazia");
         }
         this.descricao = descricao;
         this.situacao = situacao;
@@ -59,19 +44,16 @@ public class VinculoService {
     }
 
     /**
-     * Atualiza a situa√ß√£o do v√≠nculo.
-     * Poss√≠veis valores: "ativo", "inativo", "encerrado", "pendente an√°lise"
+     * Atualiza a situaÁ„o do vÌnculo.
+     * PossÌveis valores: "ativo", "inativo", "encerrado"
      */
     public void atualizarSituacao(String novaSituacao) {
-        // Verifica√ß√£o de transi√ß√£o v√°lida
         this.situacao = novaSituacao;
     }
 
     /**
-     * Encerra o v√≠nculo informando a data de encerramento.
-     *
-     * Ap√≥s o encerramento, n√£o √© poss√≠vel reativar o v√≠nculo.
-     * √â necess√°rio criar um novo v√≠nculo caso seja preciso.
+     * Encerra o vÌnculo informando a data de encerramento.
+     * ApÛs o encerramento, n„o È possÌvel reativar o vÌnculo.
      */
     public void encerrarVinculo(String dataEncerramento) {
         this.dataEncerramento = dataEncerramento;
